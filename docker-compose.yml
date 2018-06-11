@@ -1,0 +1,22 @@
+version: '3'
+
+volumes:
+  postgres_data: {}
+  postgres_backup: {}
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./compose/app/Dockerfile
+    ports:
+      - "${APP_PORT}:5000"
+    volumes:
+      - "./:/app"
+    links:
+      - redis
+    env_file:
+      - .env
+
+  redis:
+    image: redis:latest
