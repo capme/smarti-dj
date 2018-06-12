@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y vim telnet \
 WORKDIR /app
 
 COPY ./requirements.txt /app/requirements.txt
+COPY ./compose/app/supervisord.conf /etc/supervisord.conf
 COPY ./chkinstreq.sh /app/chkinstreq.sh
 RUN chmod +x /app/chkinstreq.sh
 
@@ -15,4 +16,4 @@ RUN pip3.6 install pip --upgrade && /app/chkinstreq.sh
 
 ENV PYTHONUNBUFFERED 1
 
-CMD supervisord -n
+CMD supervisord -n -c /etc/supervisord.conf
