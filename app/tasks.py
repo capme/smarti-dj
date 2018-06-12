@@ -1,20 +1,17 @@
+from config.celery import app
 from celery.schedules import crontab
 from celery.task import periodic_task
-from app.celery import celery
 
 
-@celery.task()
+@app.task()
 def add_together(a, b):
     return a + b
 
 
 @periodic_task(
-    run_every=(
-        crontab(dict(hour='*/1', minute='*/10'))
-    ),
-    name="app.tasks.task1",
+    run_every=(crontab(hour='*/1', minute=0)),
+    name="grab_adapter.tasks.status_update",
     ignore_result=True
 )
-def task1():
+def status_update():
     pass
-
