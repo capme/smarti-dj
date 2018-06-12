@@ -17,6 +17,6 @@ if is_gunicorn:
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lazacom3pl.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
 
 application = get_wsgi_application()

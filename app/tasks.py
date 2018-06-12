@@ -1,5 +1,11 @@
 from celery.schedules import crontab
 from celery.task import periodic_task
+from app.celery import celery
+
+
+@celery.task()
+def add_together(a, b):
+    return a + b
 
 
 @periodic_task(

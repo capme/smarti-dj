@@ -31,3 +31,4 @@ gevent==1.2.2
 psycogreen==1.0
 gunicorn==19.7.1
 ipython==6.2.1
+kombu==4.1.0
