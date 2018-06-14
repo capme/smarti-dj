@@ -1,10 +1,13 @@
 from rest_framework.decorators import permission_classes, authentication_classes, api_view
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 @api_view(['GET'])
-@permission_classes([])
-@authentication_classes([])
+@permission_classes([IsAuthenticated])
+@authentication_classes([JSONWebTokenAuthentication, SessionAuthentication, BasicAuthentication])
 def url1(request):
     return Response({'message': 'OK'}, 200)
 

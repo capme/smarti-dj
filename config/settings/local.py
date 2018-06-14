@@ -28,6 +28,12 @@ from .base import *
 #         'ATOMIC_REQUESTS': True,
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'smarti-dj',
+    }
+}
 
 
 CACHES = {
