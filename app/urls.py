@@ -1,7 +1,13 @@
 from . import views
 from django.conf.urls import url
+from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
 
-urlpatterns = [
-    url('^url1', views.url1),
-    url('^url2', views.url2)
-]
+
+router = routers.DefaultRouter(trailing_slash=False)
+
+urlpatterns = []
+urlpatterns += format_suffix_patterns([
+    url(r'/url1', views.url1),
+])
+urlpatterns += router.urls
