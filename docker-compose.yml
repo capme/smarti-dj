@@ -15,8 +15,18 @@ services:
       - "./:/app"
     links:
       - redis
+      - postgres
     env_file:
       - .env
 
   redis:
     image: redis:latest
+
+  postgres:
+    build: ./compose/postgres
+    ports:
+        - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/backups
+    env_file: .env
