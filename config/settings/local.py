@@ -15,23 +15,17 @@ from .base import *
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # for now, not using database functionality
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'lazacom3pl',
-#         # The following settings are not used with sqlite3:
-#         'USER': 'postgresuser',
-#         'PASSWORD': 'mysecretpass',
-#         'HOST': 'postgres',  # Empty for localhost through domain sockets or
-#                                #  '127.0.0.1' for localhost through TCP.
-#         'PORT': '5432',  # Set to empty string for default.
-#         'ATOMIC_REQUESTS': True,
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'smarti-dj',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'smarti',
+        # The following settings are not used with sqlite3:
+        'USER': 'postgresuser',
+        'PASSWORD': 'mysecretpass',
+        'HOST': 'postgres',  # Empty for localhost through domain sockets or
+                               #  '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',  # Set to empty string for default.
+        'ATOMIC_REQUESTS': True,
     }
 }
 
