@@ -2,6 +2,7 @@ from config.celery import app
 from celery.schedules import crontab
 from celery.task import periodic_task
 from config.log import logger
+import celery_pubsub
 
 
 @app.task()
@@ -27,3 +28,9 @@ def add_together(a, b):
 )
 def status_update():
     pass
+
+
+def main_publisher_distributed():
+    for x in range(0, 100):
+        res = celery_pubsub.publish('some.topic', x)
+        logger.info("[publisher] {}".format(res))
