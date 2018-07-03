@@ -30,7 +30,25 @@ def status_update():
     pass
 
 
+@app.task(
+    name="pub_sub_add"
+)
+def add(*args, **kwargs):
+    logger.info("[consumer 1] {}".format(args[0]))
+    return args[0]
+
+
+# celery_pubsub.subscribe('some.topic', add)
+
+
+@app.task(
+    name="pub_sub_main"
+)
 def main_publisher_distributed():
-    for x in range(0, 100):
-        res = celery_pubsub.publish('some.topic', x)
-        logger.info("[publisher] {}".format(res))
+    for x in range(0, 100000):
+        # res = celery_pubsub.publish('some.topic', x)
+        res = add.delay(x)
+        logger.info("[publisher 1] {}".format(x))
+        # not working
+        # res = celery_pubsub.publish('some.topic', x)
+        # logger.info("[publisher] {}".format(res))
