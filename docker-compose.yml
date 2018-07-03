@@ -19,6 +19,17 @@ services:
     env_file:
       - .env
 
+  app_consumer:
+    build:
+      context: .
+      dockerfile: ./compose/app_consumer/Dockerfile
+    volumes:
+      - "./:/app"
+    links:
+      - redis
+    env_file:
+      - .env
+
   redis:
     image: redis:latest
 
