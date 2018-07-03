@@ -1,4 +1,4 @@
-#!/home/purbo/personal/smarti-dj/venv3.6/bin/python3
+#!/home/purbo/work/smarti-dj/venv3.6/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

@@ -1,1 +1,1 @@
-/usr
+/home/purbo/anaconda3

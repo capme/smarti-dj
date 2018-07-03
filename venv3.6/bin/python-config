@@ -1,4 +1,4 @@
-#!/home/purbo/personal/smarti-dj/venv3.6/bin/python
+#!/home/purbo/work/smarti-dj/venv3.6/bin/python
 
 import sys
 import getopt

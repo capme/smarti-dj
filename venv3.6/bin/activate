@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/purbo/personal/smarti-dj/venv3.6"
+VIRTUAL_ENV="/home/purbo/work/smarti-dj/venv3.6"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

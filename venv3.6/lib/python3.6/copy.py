@@ -1,1 +1,1 @@
-/usr/lib/python3.6/copy.py
+/home/purbo/anaconda3/lib/python3.6/copy.py

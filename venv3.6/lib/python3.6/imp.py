@@ -1,1 +1,1 @@
-/usr/lib/python3.6/imp.py
+/home/purbo/anaconda3/lib/python3.6/imp.py
