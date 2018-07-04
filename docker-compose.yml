@@ -19,6 +19,15 @@ services:
     env_file:
       - .env
 
+  sshd:
+    build:
+      context: .
+      dockerfile: ./compose/sshd/Dockerfile
+    ports:
+      - "22:22"
+    volumes:
+      - "./app/ssh_directory:/root"
+
   app_consumer:
     build:
       context: .
