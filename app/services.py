@@ -4,25 +4,27 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 import datetime as dt1
 from datetime import datetime as dt
-from sklearn import preprocessing, cross_validation, svm
+from sklearn import preprocessing, svm
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import math
+import random
 
 
 class StockPredict:
     def __init__(self):
         self.df = None
 
-    # def sample(self):
-    #     board = []
-    #     for i in range(6):  # create a list with nested lists
-    #         board.append([])
-    #         print(board)
-    #         for n in range(6):
-    #             board[i].append("O")
-    #
-    #     print(board)
-    #     return board
+    def sample(self):
+        n_data = []
+        for i in range(6):  # create a list with nested lists
+            n_data.append([])
+            print(n_data)
+            for n in range(6):
+                n_data[i].append("O")
+
+        print(n_data)
+        return n_data
 
     def get_data(self, filename='TLKM.csv'):
         self.df = pd.read_csv(filename)
@@ -40,7 +42,7 @@ class StockPredict:
         X = X[:-forecast_out]
         self.df.dropna(inplace=True)
         y = np.array(self.df['label'])
-        X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
         # process using linear regression
         clf = LinearRegression(n_jobs=-1)

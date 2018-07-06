@@ -2,6 +2,7 @@ from config.celery import app
 from celery.schedules import crontab
 from celery.task import periodic_task
 from config.log import logger
+import random
 
 
 @periodic_task(
@@ -14,17 +15,24 @@ def status_update():
 
 
 @app.task(
-    name="pub_sub_add"
+    name="pub_sub_add_main"
 )
 def add(*args, **kwargs):
-    logger.info("[consumer 1] {}".format(args[0]))
-    return args[0]
+    n_data = []
+    logger.info("[consumer 1] Generate data training list ke : {}".format(args[0]))
+    for n in range(10):
+        n_data.append(random.randint(1, 101))
+    return n_data
 
 
 @app.task(
     name="pub_sub_main"
 )
 def main_publisher_distributed():
-    for x in range(0, 100000):
+    n_data = []
+    for x in range(0, 10):
         res = add.delay(x)
-        logger.info("[publisher 1] {}".format(x))
+        n_data.append(res)
+        # logger.info("[publisher 1] {}".format(x))
+
+    logger.info("[publisher 1] Result data : {} ".format(n_data))
