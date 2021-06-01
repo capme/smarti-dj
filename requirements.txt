@@ -21,7 +21,7 @@ redis==2.10.6
 requests==2.18.4
 simplejson==3.11.1
 uritemplate==3.0.0
-urllib3==1.22
+urllib3==1.26.5
 coverage==4.4.1
 celery==4.1.0
 faker==0.8.4
